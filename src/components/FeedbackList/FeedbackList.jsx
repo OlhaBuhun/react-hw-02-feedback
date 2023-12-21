@@ -9,17 +9,20 @@ class FeedbackList extends Component {
     bad: 0
   }
 
-  handleClick = () =>
-    this.setState((prevState) => ({ good: prevState.good +1 }))
+  handleClick = (e) =>
+    {
+      console.log(e.target.name);
+      this.setState((prevState) => ({[e.target.name]: prevState[e.target.name] +1} ))
+    }
 
   render() {
     return (
       <FeedbackListStyle>
         <FeedbackListTitle>Please leave feedback</FeedbackListTitle>
         <div>
-          <FeedbackListButton type="button" onClick={this.handleClick}>Good</FeedbackListButton>
-          <FeedbackListButton type="button">Neutral</FeedbackListButton>
-          <FeedbackListButton type="button">Bad</FeedbackListButton>
+          <FeedbackListButton type="button" name="good" onClick={this.handleClick}>Good</FeedbackListButton>
+          <FeedbackListButton type="button" name="neutral" onClick={this.handleClick}>Neutral</FeedbackListButton>
+          <FeedbackListButton type="button" name="bad" onClick={this.handleClick}>Bad</FeedbackListButton>
         </div>
         <FeedbackListTitle>Statistics</FeedbackListTitle>
         <FeedbackListUl>
