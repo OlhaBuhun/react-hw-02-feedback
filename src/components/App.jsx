@@ -1,7 +1,9 @@
 import { Component } from "react";
-import { FeedbackListButton, FeedbackListLi, FeedbackListStyle, FeedbackListTitle, FeedbackListUl } from "./FeedbackList/FeedbackListStyled";
-// import { FeedbackListUl, FeedbackListButton, FeedbackListStyle, FeedbackListTitle, FeedbackListLi } from "./FeedbackListStyled";
+// import { FeedbackListButton, FeedbackListLi, FeedbackListStyle, FeedbackListTitle, FeedbackListUl } from "./FeedbackList/FeedbackListStyled";
 // import FeedbackList from "./FeedbackList/FeedbackList";
+// import { FeedbackListUl, FeedbackListButton, FeedbackListStyle, FeedbackListTitle, FeedbackListLi } from "./FeedbackListStyled";
+import FeedbackOptions from "./FeedbackOptions/FeedbackOptions";
+import Statstics from "./Statistics/Statistics";
 
 // export const App = () => {
 //   return (
@@ -27,12 +29,13 @@ class App extends Component {
   }
 
   handleClick = (e) =>
-  {
-    console.log(e.target.value);
-    const total = e.target.value;
-    this.setState((prevState) => ({[e.target.name]: prevState[e.target.name] +1} ))
-    // return total
-    console.log(total);
+  { console.log(e.currentTarget
+    );
+    const option = e.target.name
+    this.setState((prevState) => ({[option]: prevState[option] +1} ))
+    console.log(option);
+    // const options = [[option]: state[option]];
+    return option
   }
 
   countTotalFeedback = () => {
@@ -46,21 +49,14 @@ class App extends Component {
 
   render(){
     return(
-      <FeedbackListStyle>
-      <FeedbackListTitle>Please leave feedback</FeedbackListTitle>
       <div>
-        <FeedbackListButton type="button" name="good" onClick={this.handleClick}>Good</FeedbackListButton>
-        <FeedbackListButton type="button" name="neutral" onClick={this.handleClick}>Neutral</FeedbackListButton>
-        <FeedbackListButton type="button" name="bad" onClick={this.handleClick}>Bad</FeedbackListButton>
+          <h2>Please leave feedback</h2>
+        
+          < FeedbackOptions options={['good', 'neutral', 'bad']} onLeaveFeedback={this.handleClick} />
+          <h2 >Statistics</h2>
+          <Statstics options={['good', 'neutral', 'bad']} data={this.state.option}/>
+    
       </div>
-      <FeedbackListTitle>Statistics</FeedbackListTitle>
-      <FeedbackListUl>
-        <FeedbackListLi>Good: {this.state.good}</FeedbackListLi>
-        <FeedbackListLi>Neutral: {this.state.neutral}</FeedbackListLi>
-        <FeedbackListLi>Bad: {this.state.bad}</FeedbackListLi>
-        <FeedbackListLi>Total: {this.countTotalFeedback()}</FeedbackListLi>
-      </FeedbackListUl>
-    </FeedbackListStyle>
 
     )
   }
