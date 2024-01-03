@@ -1,3 +1,6 @@
+import PropTypes from 'prop-types';
+
+
 const FeedbackOptions = ({options, onLeaveFeedback} ) => (
   <ul>
     {options.map((option, index) => (
@@ -10,6 +13,11 @@ const FeedbackOptions = ({options, onLeaveFeedback} ) => (
     ))}
   </ul>
 )
+
+FeedbackOptions.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.string.isRequired),
+  onLeaveFeedback: PropTypes.func,
+};
 
 export default FeedbackOptions
 
