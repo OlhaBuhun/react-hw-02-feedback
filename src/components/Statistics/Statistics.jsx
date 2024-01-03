@@ -1,13 +1,24 @@
-const Statstics = ({options, data} ) => (
-  <ul>
-    {options.map((option, index) => (
-      <li key={index}>
-       <p >
-       {option.toUpperCase()}: {data}
-       </p>
-      </li>
-    ))}
-  </ul>
-)
+import PropTypes from 'prop-types';
 
-export default Statstics;
+
+const Statistics = ({ good, neutral, bad, total = 0, positivePercentage = 0 }) => {
+  return (
+    <div>
+      <p>Good: {good}</p>
+      <p>Neutral: {neutral}</p>
+      <p>Bad: {bad}</p>
+      <p>Total: {total}</p>
+      <p>Positive feedback: {positivePercentage}%</p>
+    </div>
+  )
+}
+
+Statistics.propTypes = {
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  positivePercentage: PropTypes.number.isRequired,
+};
+
+export default Statistics;
