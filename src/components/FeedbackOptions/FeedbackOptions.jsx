@@ -4,8 +4,8 @@ import { FeedbackOptionsButton, FeedbackOptionsItem, FeedbackOptionsStyle } from
 
 const FeedbackOptions = ({options, onLeaveFeedback} ) => (
   <FeedbackOptionsStyle>
-    {options.map((option, index) => (
-      <FeedbackOptionsItem key={index}>
+    {options.map((option) => (
+      <FeedbackOptionsItem key={option}>
        <FeedbackOptionsButton 
         type="button" 
         name={option}
